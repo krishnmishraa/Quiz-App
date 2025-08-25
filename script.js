@@ -20,6 +20,7 @@ const questionElement = document.getElementById('question');
 const optionsContainer = document.getElementById('options-container');
 const nextButton = document.getElementById('next-button');
 const timerElement = document.getElementById('timer');
+const restartButton = document.getElementById('restart-button');
 
 let currentQuestionIndex = 0;
 let userScore = 0; // Initialize user score
@@ -72,7 +73,8 @@ function checkAnswer(selectedOption) {
             questionElement.textContent = `Quiz Finished! Your score: ${userScore}/${quizQuestions.length}`;
             optionsContainer.innerHTML = '';
             nextButton.style.display = 'none';
-            timerElement.style.display = 'none'; // Hide timer at the end
+            timerElement.style.display = 'none';
+            restartButton.style.display = 'block'; // Show restart button
         }
     }, 1000); // Highlight for 1 second
 
@@ -101,6 +103,17 @@ function startTimer() {
     }, 1000);
 }
 
+function restartQuiz() {
+    currentQuestionIndex = 0;
+    userScore = 0;
+    nextButton.style.display = 'block'; // Show next button
+    restartButton.style.display = 'none'; // Hide restart button
+    timerElement.style.display = 'block'; // Show timer
+    renderQuestion();
+}
+
+restartButton.addEventListener('click', restartQuiz);
+
 nextButton.addEventListener('click', () => {
     clearInterval(timer); // Clear timer if next button is clicked
     currentQuestionIndex++;
@@ -111,6 +124,7 @@ nextButton.addEventListener('click', () => {
         optionsContainer.innerHTML = '';
         nextButton.style.display = 'none';
         timerElement.style.display = 'none';
+        restartButton.style.display = 'block'; // Show restart button
     }
 });
 
