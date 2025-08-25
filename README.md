@@ -33,16 +33,13 @@ Quiz-App/
 
 Clone this repository:
 
-git clone https://github.com/your-username/quiz-app.git
+git clone https://github.com/krishnmishraa/quiz-app.git
 
 
 Open the project folder.
 
 Double-click index.html to run in your browser.
 
-📸 Preview
-
-(Add a screenshot here once your UI looks nice!)
 
 🔮 Future Improvements
 
