@@ -19,20 +19,27 @@ const quizQuestions = [
 const questionElement = document.getElementById('question');
 const optionsContainer = document.getElementById('options-container');
 const nextButton = document.getElementById('next-button');
+const timerElement = document.getElementById('timer');
 
 let currentQuestionIndex = 0;
 let userScore = 0; // Initialize user score
+let timeLeft = 15; // Initial time for each question
+let timer;
 
 function renderQuestion() {
+    clearInterval(timer); // Clear any existing timer
     const currentQuestion = quizQuestions[currentQuestionIndex];
     questionElement.textContent = currentQuestion.question;
     optionsContainer.innerHTML = ''; // Clear previous options
+
+    startTimer(); // Start timer for the new question
 
     currentQuestion.options.forEach(option => {
         const button = document.createElement('button');
         button.textContent = option;
         button.classList.add('option-button');
         button.addEventListener('click', (e) => {
+            clearInterval(timer); // Clear timer when an option is selected
             checkAnswer(option);
             // Disable all option buttons after an answer is selected
             Array.from(optionsContainer.children).forEach(btn => {
@@ -50,6 +57,26 @@ function checkAnswer(selectedOption) {
     if (selectedOption === currentQuestion.correctAnswer) {
         userScore++;
     }
+}
+
+function startTimer() {
+    timeLeft = 15; // Reset timer for each question
+    timerElement.textContent = timeLeft;
+    timer = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizQuestions.length) {
+                renderQuestion();
+            } else {
+                questionElement.textContent = `Quiz Finished! Your score: ${userScore}/${quizQuestions.length}`;
+                optionsContainer.innerHTML = '';
+                nextButton.style.display = 'none';
+            }
+        }
+    }, 1000);
 }
 
 nextButton.addEventListener('click', () => {
