@@ -1,4 +1,4 @@
-🎯 Quiz App
+ Quiz App
 
 A simple and interactive Quiz Application built with HTML, CSS, and JavaScript. Users can answer multiple-choice questions, check correctness, and track their score.
 
@@ -29,32 +29,6 @@ Quiz-App/
 │── script.js       # Quiz logic and functionality
 │── README.md       # Project documentation
 
-🎮 How to Run
-
-Clone this repository:
-
-git clone https://github.com/krishnmishraa/quiz-app.git
 
 
-Open the project folder.
 
-Double-click index.html to run in your browser.
-
-
-🔮 Future Improvements
-
-Add timer for each question ⏳
-
-Store high scores in local storage 📊
-
-Add categories and difficulty levels 🎯
-
-Mobile-friendly UI 📱
-
-🤝 Contributing
-
-Pull requests are welcome! Feel free to fork this repo and submit improvements.
-
-📜 License
-
-This project is licensed under the MIT License – free to use and modify.
