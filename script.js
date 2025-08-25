@@ -54,6 +54,28 @@ function renderQuestion() {
 
 function checkAnswer(selectedOption) {
     const currentQuestion = quizQuestions[currentQuestionIndex];
+    const optionButtons = Array.from(optionsContainer.children);
+
+    optionButtons.forEach(button => {
+        if (button.textContent === currentQuestion.correctAnswer) {
+            button.classList.add('correct');
+        } else if (button.textContent === selectedOption) {
+            button.classList.add('incorrect');
+        }
+    });
+
+    setTimeout(() => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizQuestions.length) {
+            renderQuestion();
+        } else {
+            questionElement.textContent = `Quiz Finished! Your score: ${userScore}/${quizQuestions.length}`;
+            optionsContainer.innerHTML = '';
+            nextButton.style.display = 'none';
+            timerElement.style.display = 'none'; // Hide timer at the end
+        }
+    }, 1000); // Highlight for 1 second
+
     if (selectedOption === currentQuestion.correctAnswer) {
         userScore++;
     }
@@ -80,13 +102,15 @@ function startTimer() {
 }
 
 nextButton.addEventListener('click', () => {
+    clearInterval(timer); // Clear timer if next button is clicked
     currentQuestionIndex++;
     if (currentQuestionIndex < quizQuestions.length) {
         renderQuestion();
     } else {
         questionElement.textContent = `Quiz Finished! Your score: ${userScore}/${quizQuestions.length}`;
         optionsContainer.innerHTML = '';
-        nextButton.style.display = 'none'; // Hide the next button
+        nextButton.style.display = 'none';
+        timerElement.style.display = 'none';
     }
 });
 

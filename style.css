@@ -18,6 +18,62 @@ main {
     text-align: center;
 }
 
+.option-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #e2e2e2;
+}
+
+#next-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#next-button:hover {
+    background-color: #0056b3;
+}
+
+#next-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+#timer {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
 @media (max-width: 600px) {
     main {
         width: 95%;
